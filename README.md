@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # AXIOM
 ## An Educational Algorithmic Trading Simulator
 
