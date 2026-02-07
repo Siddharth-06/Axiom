@@ -5,6 +5,17 @@
 MarketSimulator::MarketSimulator(const Config& cfg)
     : config(cfg), rng(cfg.seed) {}
 
+<<<<<<< HEAD
+=======
+void MarketSimulator::setPrices(const std::vector<double>& inputPrices) {
+    prices = inputPrices;
+}
+
+void MarketSimulator::registerPriceSignal() {
+    signals[SignalType::PRICE] = prices;
+}
+
+>>>>>>> 9dff4cf (meow)
 void MarketSimulator::runMarket() {
     prices.clear();
     double price = 100.0;
@@ -44,7 +55,10 @@ double MarketSimulator::stepMeanReverting(double price) {
     return next > 0.0 ? next : 0.01;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9dff4cf (meow)
 static double mean(const std::vector<double>& v, int l, int r) {
     double s = 0.0;
     for (int i = l; i <= r; i++) s += v[i];
@@ -67,7 +81,10 @@ void MarketSimulator::computeMovingAverage(int sw, int lw) {
 }
 
 void MarketSimulator::computeRSI(int period) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9dff4cf (meow)
     std::vector<double> rsi(prices.size(), 0.0);
 
     double gain = 0.0;
@@ -106,6 +123,7 @@ void MarketSimulator::computeRSI(int period) {
     signals[SignalType::RSI] = rsi;
 }
 
+<<<<<<< HEAD
 
 
 void MarketSimulator::computeVolatility(int window) {
@@ -115,6 +133,13 @@ void MarketSimulator::computeVolatility(int window) {
     for (int t = window; t < (int)prices.size(); t++) {
 
         double mean = 0.0;
+=======
+void MarketSimulator::computeVolatility(int window) {
+    std::vector<double> vol(prices.size(), 0.0);
+
+    for (int t = window; t < (int)prices.size(); t++) {
+        double mean_val = 0.0;
+>>>>>>> 9dff4cf (meow)
         double sq_sum = 0.0;
 
         // compute log returns
@@ -122,6 +147,7 @@ void MarketSimulator::computeVolatility(int window) {
         for (int i = t - window + 1; i <= t; i++) {
             double r = std::log(prices[i] / prices[i - 1]);
             rets.push_back(r);
+<<<<<<< HEAD
             mean += r;
         }
 
@@ -129,6 +155,15 @@ void MarketSimulator::computeVolatility(int window) {
 
         for (double r : rets)
             sq_sum += (r - mean) * (r - mean);
+=======
+            mean_val += r;
+        }
+
+        mean_val /= window;
+
+        for (double r : rets)
+            sq_sum += (r - mean_val) * (r - mean_val);
+>>>>>>> 9dff4cf (meow)
 
         vol[t] = std::sqrt(sq_sum / window);
     }
@@ -165,12 +200,18 @@ std::vector<SignalType> MarketSimulator::getAvailableSignals() const {
     return out;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9dff4cf (meow)
 const std::vector<double>& MarketSimulator::getPrices() const {
     return prices;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9dff4cf (meow)
 std::string MarketSimulator::signalName(SignalType s) {
     switch (s) {
         case SignalType::PRICE: return "Price";

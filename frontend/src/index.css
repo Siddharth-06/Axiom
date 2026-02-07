@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 * {
@@ -19,4 +20,338 @@ body {
 
 a, button {
   all: unset;
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* AXIOM Dark Theme - Cyan/Blue Color Palette */
+    --axiom-bg: #03070d;
+    --axiom-panel: #080f1a;
+    --axiom-panel-hover: #0d1521;
+    --axiom-accent: #00f2ff;
+    --axiom-accent-glow: rgba(0, 242, 255, 0.3);
+    --axiom-border: #141e2e;
+    --axiom-border-hover: #1e2d42;
+    --axiom-text: #ffffff;
+    --axiom-text-dim: #5c6d84;
+    --axiom-text-muted: #3a4a5e;
+    --axiom-success: #22ff88;
+    --axiom-danger: #ff4757;
+    --axiom-warning: #ffb800;
+    
+    --background: 220 50% 3%;
+    --foreground: 0 0% 100%;
+    --card: 220 40% 5%;
+    --card-foreground: 0 0% 100%;
+    --popover: 220 40% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 183 100% 50%;
+    --primary-foreground: 220 50% 3%;
+    --secondary: 220 30% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 215 20% 50%;
+    --accent: 183 100% 50%;
+    --accent-foreground: 220 50% 3%;
+    --destructive: 354 80% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 30% 12%;
+    --input: 220 30% 12%;
+    --ring: 183 100% 50%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--axiom-bg);
+    color: var(--axiom-text);
+    overflow-x: hidden;
+  }
+  
+  code, pre, .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .axiom-panel {
+    background: var(--axiom-panel);
+    border: 1px solid var(--axiom-border);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  .axiom-panel:hover {
+    border-color: var(--axiom-border-hover);
+  }
+  
+  .axiom-glow {
+    box-shadow: 0 0 20px var(--axiom-accent-glow),
+                0 0 40px rgba(0, 242, 255, 0.1);
+  }
+  
+  .axiom-text-glow {
+    text-shadow: 0 0 10px var(--axiom-accent-glow),
+                 0 0 20px rgba(0, 242, 255, 0.3);
+  }
+  
+  .axiom-gradient-text {
+    background: linear-gradient(135deg, var(--axiom-accent) 0%, #00c8ff 50%, #0088ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .axiom-button {
+    background: linear-gradient(135deg, var(--axiom-accent) 0%, #00c8ff 100%);
+    color: var(--axiom-bg);
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .axiom-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .axiom-button:hover::before {
+    left: 100%;
+  }
+  
+  .axiom-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--axiom-accent-glow);
+  }
+  
+  .axiom-input {
+    background: var(--axiom-panel-hover);
+    border: 1px solid var(--axiom-border);
+    color: var(--axiom-text);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .axiom-input:focus {
+    outline: none;
+    border-color: var(--axiom-accent);
+    box-shadow: 0 0 0 3px var(--axiom-accent-glow);
+  }
+  
+  .axiom-select {
+    background: var(--axiom-panel-hover);
+    border: 1px solid var(--axiom-border);
+    color: var(--axiom-text);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300f2ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 36px;
+  }
+  
+  .axiom-select:focus {
+    outline: none;
+    border-color: var(--axiom-accent);
+    box-shadow: 0 0 0 3px var(--axiom-accent-glow);
+  }
+  
+  .axiom-select option {
+    background: var(--axiom-panel);
+    color: var(--axiom-text);
+    padding: 10px;
+  }
+  
+  .axiom-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--axiom-text-dim);
+  }
+  
+  .axiom-tab {
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--axiom-text-dim);
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .axiom-tab.active {
+    color: var(--axiom-accent);
+    border-bottom-color: var(--axiom-accent);
+  }
+  
+  .axiom-tab:hover:not(.active) {
+    color: var(--axiom-text);
+    border-bottom-color: var(--axiom-border);
+  }
+  
+  .axiom-metric-card {
+    background: linear-gradient(135deg, var(--axiom-panel) 0%, var(--axiom-panel-hover) 100%);
+    border: 1px solid var(--axiom-border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .axiom-metric-card:hover {
+    border-color: var(--axiom-accent);
+    transform: translateY(-2px);
+  }
+  
+  .axiom-metric-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--axiom-accent);
+  }
+  
+  .axiom-metric-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--axiom-text-dim);
+    margin-top: 8px;
+  }
+  
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--axiom-bg);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--axiom-border);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--axiom-text-dim);
+  }
+  
+  /* Animations */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px var(--axiom-accent-glow);
+    }
+    50% {
+      box-shadow: 0 0 20px var(--axiom-accent-glow),
+                  0 0 40px rgba(0, 242, 255, 0.2);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.5s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+}
+
+/* Recharts custom styles */
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+.recharts-default-tooltip {
+  background: var(--axiom-panel) !important;
+  border: 1px solid var(--axiom-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.recharts-tooltip-label {
+  color: var(--axiom-text-dim) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.recharts-tooltip-item {
+  color: var(--axiom-accent) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+>>>>>>> 9dff4cf (meow)
 }

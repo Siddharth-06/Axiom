@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "market": "Trending",
   "timesteps": 100,
@@ -8,3 +9,30 @@
     "position_size": 1
   }
 }
+=======
+{
+  "market": "Mean Reversion",
+  "timesteps": 1000,
+  "seed": 43,
+  "strategy": {
+    "buy": [
+      {
+        "lhs": "RSI",
+        "op": "<",
+        "rhs_type": "CONSTANT",
+        "rhs_value": 30,
+        "rhs_signal": "Price"
+      }
+    ],
+    "sell": [
+      {
+        "lhs": "RSI",
+        "op": ">",
+        "rhs_type": "CONSTANT",
+        "rhs_value": 70,
+        "rhs_signal": "Price"
+      }
+    ]
+  }
+}
+>>>>>>> 9dff4cf (meow)

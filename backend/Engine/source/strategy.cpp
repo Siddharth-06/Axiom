@@ -25,5 +25,8 @@ bool Strategy::isValid(const MarketSimulator& sim) const {
 
     return true;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9dff4cf (meow)

@@ -7,15 +7,26 @@
 #include <string>
 #include <cmath>
 #include <algorithm>
+<<<<<<< HEAD
 
 #include "../json/json.hpp"
 
 using json = nlohmann::json;
+=======
+#include "../json/json.hpp"
+
+using json = nlohmann::json;
+
+>>>>>>> 9dff4cf (meow)
 SignalType signalFromString(const std::string& s) {
     if (s == "RSI") return SignalType::RSI;
     if (s == "VOLATILITY") return SignalType::VOLATILITY;
     if (s == "VOLATILITY_MA") return SignalType::VOLATILITY_MA;
+<<<<<<< HEAD
     if (s == "MA" || s == "SMA") return SignalType::MA_SHORT;
+=======
+    if (s == "MA" || s == "SMA" || s == "MA_SHORT") return SignalType::MA_SHORT;
+>>>>>>> 9dff4cf (meow)
     if (s == "MA_LONG") return SignalType::MA_LONG;
     if (s == "Price") return SignalType::PRICE;
     return SignalType::PRICE;
@@ -23,6 +34,10 @@ SignalType signalFromString(const std::string& s) {
 
 inline bool evaluateCondition(const MarketSimulator& sim, const Condition& c, int t) {
     double left = sim.getSignal(c.lhs, t);
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 9dff4cf (meow)
     double right = 0.0;
     if (c.rhs_type == OperandType::SIGNAL) {
         right = sim.getSignal(c.rhs_signal, t);
@@ -30,16 +45,25 @@ inline bool evaluateCondition(const MarketSimulator& sim, const Condition& c, in
         right = c.rhs_value;
     }
 
+<<<<<<< HEAD
     // Compare
+=======
+>>>>>>> 9dff4cf (meow)
     if (c.op == '>') return left > right;
     if (c.op == '<') return left < right;
     if (c.op == '=') return std::abs(left - right) < 0.0001;
     return false;
 }
 
+<<<<<<< HEAD
 
 int main(int argc, char* argv[]) {
     json input;
+=======
+int main(int argc, char* argv[]) {
+    json input;
+    
+>>>>>>> 9dff4cf (meow)
     if (argc > 1) {
         std::ifstream f(argv[1]);
         if (f.is_open()) {
@@ -62,13 +86,18 @@ int main(int argc, char* argv[]) {
 
     Config cfg;
     std::string mkt = input.value("market", "Trending");
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 9dff4cf (meow)
     if (mkt == "Mean Reversion" || mkt == "MeanReversion") cfg.market = "MeanReverting";
     else if (mkt == "Sideways") cfg.market = "Sideways";
     else cfg.market = "Trending";
 
     cfg.timesteps = input.value("timesteps", 1000);
     cfg.seed = input.value("seed", 42);
+<<<<<<< HEAD
 
     MarketSimulator sim(cfg);
     sim.runMarket();
@@ -79,16 +108,47 @@ int main(int argc, char* argv[]) {
     sim.computeMovingAverageOnSignal(SignalType::VOLATILITY, SignalType::VOLATILITY_MA, 50);
 
     const auto& prices = sim.getPrices();
+=======
+    bool use_external_prices = input.contains("prices");
+    
+    MarketSimulator sim(cfg);
+    if(use_external_prices){
+        std::vector<double> prices = input["prices"].get<std::vector<double>>();
+            sim.setPrices(prices);
+    }
+    else
+    sim.runMarket();
+    
+
+
+    sim.computeRSI(14);
+    sim.computeVolatility(20);
+    sim.computeMovingAverage(20, 50);
+    sim.computeMovingAverageOnSignal(SignalType::VOLATILITY, SignalType::VOLATILITY_MA, 50);
+    sim.registerPriceSignal();
+    
+    const auto& prices = sim.getPrices();
+
+>>>>>>> 9dff4cf (meow)
     Strategy strategy;
     strategy.name = "User Strategy";
 
     auto parseRules = [&](const json& rules, std::vector<Condition>& target) {
         for (const auto& r : rules) {
             Condition c;
+<<<<<<< HEAD
         
             c.lhs = signalFromString(r.value("lhs", "Price"));
             std::string op = r.value("op", ">");
             c.op = op[0];
+=======
+            
+            c.lhs = signalFromString(r.value("lhs", "Price"));
+            
+            std::string op = r.value("op", ">");
+            c.op = op[0];
+
+>>>>>>> 9dff4cf (meow)
             std::string type = r.value("rhs_type", "CONSTANT");
             if (type == "SIGNAL") {
                 c.rhs_type = OperandType::SIGNAL;
@@ -106,6 +166,10 @@ int main(int argc, char* argv[]) {
         if (input["strategy"].contains("buy")) parseRules(input["strategy"]["buy"], strategy.buy);
         if (input["strategy"].contains("sell")) parseRules(input["strategy"]["sell"], strategy.sell);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9dff4cf (meow)
     bool in_pos = false;
     double entry_price = 0.0;
     std::vector<json> trades;
@@ -158,6 +222,10 @@ int main(int argc, char* argv[]) {
                 {"pnl", pnl}
             });
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9dff4cf (meow)
         peak = std::max(peak, equity);
         double dd = peak - equity;
         if (dd > max_dd) max_dd = dd;
@@ -166,12 +234,23 @@ int main(int argc, char* argv[]) {
     json output;
     output["prices"] = prices;
     output["trades"] = trades;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 9dff4cf (meow)
     output["metrics"] = {
         {"total_pnl", std::round(equity * 100.0) / 100.0},
         {"num_trades", trade_count},
         {"win_rate", trade_count > 0 ? (double)win_count/trade_count : 0.0},
         {"max_drawdown", std::round(max_dd * 100.0) / 100.0}
     };
+<<<<<<< HEAD
     std::cout << output.dump() << std::endl;
 
+=======
+
+    std::cout << output.dump() << std::endl;
+
+    return 0;
+>>>>>>> 9dff4cf (meow)
 }
