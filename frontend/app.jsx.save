@@ -1,0 +1,184 @@
+import { useState } from "react";
+import "./App.css";
+import ConditionRow from "./components/ConditionRow";
+
+/* ---- Temporary signal list (later comes from backend) ---- */
+const SIGNALS = [
+  "PRICE",
+  "RSI",
+  "VOLATILITY",
+  "VOLATILITY_MA"
+];
+
+/* ---- Helper to create a new condition ---- */
+const newCondition = () => ({
+  lhs: SIGNALS[0],
+  op: "<",
+  rhs_type: "CONSTANT",
+  rhs_value: 0
+});
+
+function App() {
+  const [market, setMarket] = useState("Mean Reverting");
+  const [buyConditions, setBuyConditions] = useState([]);
+  const [sellConditions, setSellConditions] = useState([]);
+  const [result, setResult] = useState(null);
+
+  /* ---- Run simulation (mock for now) ---- */
+  const handleRunSimulation = () => {
+    const payload = {
+      market,
+      timesteps: 2000,
+      seed: 42,
+      strategy: {
+        buy: buyConditions,
+        sell: sellConditions
+      }
+    };
+
+    console.log("Strategy payload →", payload);
+
+    /* TEMP mock result */
+    setResult({
+      metrics: {
+        total_pnl: -3.07,
+        max_drawdown: 7.69,
+        win_rate: 0.419,
+        num_trades: 86
+      }
+    });
+  };
+
+  return (
+    <div className="app">
+      {/* ================= HEADER ================= */}
+      <header>
+        <h1><span>AXIOM</span></h1>
+        <p className="disclaimer">
+          Synthetic Markets · Deterministic · Educational
+        </p>
+      </header>
+
+      {/* ================= MAIN GRID ================= */}
+      <div className="bento-grid">
+        {/* -------- Strategy Builder -------- */}
+        <div className="card strategy">
+          <h2>Strategy Configuration</h2>
+
+          <label>Market Regime</label>
+          <select value={market} onChange={e => setMarket(e.target.value)}>
+            <option value="Trending">Trending</option>
+            <option value="Sideways">Sideways</option>
+            <option value="Mean Reverting">Mean Reverting</option>
+          </select>
+
+          {/* ===== BUY CONDITIONS ===== */}
+          <h2 style={{ marginTop: 12 }}>Buy Conditions</h2>
+
+          {buyConditions.map((c, i) => (
+            <ConditionRow
+              key={`buy-${i}`}
+              condition={c}
+              signals={SIGNALS}
+              onChange={(updated) => {
+                const next = [...buyConditions];
+                next[i] = updated;
+                setBuyConditions(next);
+              }}
+              onRemove={() =>
+                setBuyConditions(buyConditions.filter((_, j) => j !== i))
+              }
+            />
+          ))}
+
+          <button
+            onClick={() =>
+              setBuyConditions([...buyConditions, newCondition()])
+            }
+          >
+            + Add Buy Condition
+          </button>
+
+          {/* ===== SELL CONDITIONS ===== */}
+          <h2 style={{ marginTop: 18 }}>Sell Conditions</h2>
+
+          {sellConditions.map((c, i) => (
+            <ConditionRow
+              key={`sell-${i}`}
+              condition={c}
+              signals={SIGNALS}
+              onChange={(updated) => {
+                const next = [...sellConditions];
+                next[i] = updated;
+                setSellConditions(next);
+              }}
+              onRemove={() =>
+                setSellConditions(sellConditions.filter((_, j) => j !== i))
+              }
+            />
+          ))}
+
+          <button
+            onClick={() =>
+              setSellConditions([...sellConditions, newCondition()])
+            }
+          >
+            + Add Sell Condition
+          </button>
+
+          {/* ===== RUN ===== */}
+          <button
+            style={{ marginTop: 16 }}
+            onClick={handleRunSimulation}
+            disabled={
+              buyConditions.length === 0 || sellConditions.length === 0
+            }
+          >
+            Run Simulation
+          </button>
+
+          {/* ===== DEBUG PAYLOAD (remove later) ===== */}
+          <pre style={{ fontSize: 11, opacity: 0.6, marginTop: 12 }}>
+{JSON.stringify(
+  { buy: buyConditions, sell: sellConditions },
+  null,
+  2
+)}
+          </pre>
+        </div>
+
+        {/* -------- Metrics Panel -------- */}
+        {result?.metrics && (
+          <div className="metrics-grid">
+            <div
+              className={`card metric-card ${
+                result.metrics.total_pnl >= 0 ? "positive" : "negative"
+              }`}
+            >
+              <span>Total PnL</span>
+              <strong>{result.metrics.total_pnl}</strong>
+            </div>
+
+            <div className="card metric-card">
+              <span>Max Drawdown</span>
+              <strong>{result.metrics.max_drawdown}</strong>
+            </div>
+
+            <div className="card metric-card">
+              <span>Win Rate</span>
+              <strong>{(result.metrics.win_rate * 100).toFixed(1)}%</strong>
+            </div>
+
+            <div className="card metric-card">
+              <span>Trades</span>
+              <strong>{result.metrics.num_trades}</strong>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default App;
+

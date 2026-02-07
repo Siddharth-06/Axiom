@@ -1,0 +1,10 @@
+{
+  "market": "Trending",
+  "timesteps": 100,
+  "seed": 42,
+  "strategy": {
+    "short_window": 3,
+    "long_window": 5,
+    "position_size": 1
+  }
+}
