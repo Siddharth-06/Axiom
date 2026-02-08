@@ -4,6 +4,10 @@ import { TrendingUp, Home, Trophy, Info } from 'lucide-react';
 import { Button } from './components/ui/button';
 import ChallengeMode from './pages/ChallengeMode';
 import  SandboxMode  from './pages/SandboxMode';
+<<<<<<< HEAD
+=======
+import LandingPage from './pages/LandingPage';
+>>>>>>> 10bb505 (serious meow)
 import About from './pages/About';
 import './App.css';
 
@@ -90,7 +94,11 @@ function Layout() {
               <Route path="/challenge" element={<ChallengeMode />} />
               <Route path="/challenge/:challengeId" element={<ChallengeMode />} />
               <Route path="/about" element={<About/>} />
+<<<<<<< HEAD
               <Route path="/" element={<About />} />
+=======
+              <Route path="/" element={<LandingPage />} />
+>>>>>>> 10bb505 (serious meow)
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </motion.div>

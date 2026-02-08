@@ -3,7 +3,11 @@ import type { SimulationInput, SimulationResult, Condition } from '@/types/chall
 
 export type SignalType = 'RSI' | 'VOLATILITY' | 'MA_SHORT' | 'MA_LONG' | 'PRICE' | 'VOLATILITY_MA';
 
+<<<<<<< HEAD
 // Compute RSI for a price series
+=======
+
+>>>>>>> 10bb505 (serious meow)
 export function computeRSI(prices: number[], period: number = 14): number[] {
   const rsi: number[] = new Array(prices.length).fill(50);
   
@@ -199,7 +203,11 @@ export function checkObjectives(
       case 'max_drawdown':
         return result.metrics.max_drawdown <= obj.target;
       case 'survival':
+<<<<<<< HEAD
         return result.metrics.total_pnl > -5; // Survived if not catastrophic loss
+=======
+        return result.metrics.total_pnl > -5;
+>>>>>>> 10bb505 (serious meow)
       case 'trades':
         return result.metrics.num_trades >= obj.target;
       default:

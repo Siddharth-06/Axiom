@@ -1,4 +1,9 @@
 #!/bin/bash
+<<<<<<< HEAD
+=======
+# AXIOM - Start Script for macOS
+# This script starts both the backend and serves the frontend
+>>>>>>> 10bb505 (serious meow)
 
 set -e
 

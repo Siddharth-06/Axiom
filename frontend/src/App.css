@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 :root {
   --bg: #03070d;
   --panel: #080f1a;
@@ -150,6 +151,8 @@ body, html {
 .m-val { font-size: 26px; font-weight: 800; word-break: break-all; }
 .cyan { color: var(--accent); }
 =======
+=======
+>>>>>>> 10bb505 (serious meow)
 button, input, select, a {
   transition: all 0.3s ease;
 }
@@ -266,5 +269,9 @@ a:focus-visible {
   .no-print {
     display: none !important;
   }
+<<<<<<< HEAD
 }
 >>>>>>> 9dff4cf (meow)
+=======
+}
+>>>>>>> 10bb505 (serious meow)

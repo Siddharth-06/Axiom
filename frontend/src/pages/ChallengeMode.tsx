@@ -4,7 +4,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { 
   Play, Plus, X, TrendingUp, ArrowLeft, RotateCcw, Trophy, 
   Activity, Shield, CheckCircle2, AlertCircle, ChevronRight,
+<<<<<<< HEAD
   Target, Lightbulb, BarChart3, DollarSign, Percent, Hash
+=======
+  Target, Lightbulb, BarChart3, DollarSign, Percent, Hash,
+  ExternalLink, BookOpen
+>>>>>>> 10bb505 (serious meow)
 } from 'lucide-react';
 import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
@@ -35,7 +40,10 @@ const operators = [
   { value: '>', label: '>', description: 'Greater than' },
 ];
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 10bb505 (serious meow)
 function ChallengeCard({ 
   challenge, 
   onSelect 
@@ -101,7 +109,10 @@ function ChallengeCard({
   );
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 10bb505 (serious meow)
 function RuleRow({ 
   rule, 
   onUpdate, 
@@ -201,7 +212,10 @@ function RuleRow({
   );
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 10bb505 (serious meow)
 function PriceChart({ 
   prices, 
   trades = [], 
@@ -215,13 +229,22 @@ function PriceChart({
     return prices.map((p, i) => ({ t: i, price: p }));
   }, [prices]);
 
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 10bb505 (serious meow)
   const buyTrades = useMemo(() => trades.filter(t => t.type === 'BUY'), [trades]);
   const sellTrades = useMemo(() => trades.filter(t => t.type === 'SELL'), [trades]);
 
   const minPrice = Math.min(...prices);
   const maxPrice = Math.max(...prices);
   const priceRange = maxPrice - minPrice;
+<<<<<<< HEAD
   const yDomain = [minPrice - priceRange * 0.1, maxPrice + priceRange * 0.1];
+=======
+  
+  const yDomain = [minPrice - priceRange * 0.15, maxPrice + priceRange * 0.15];
+>>>>>>> 10bb505 (serious meow)
 
   return (
     <div style={{ width: '100%', height }}>
@@ -240,18 +263,25 @@ function PriceChart({
             dataKey="t" 
             stroke="#475569"
             tick={{ fill: '#64748b', fontSize: 12 }}
+<<<<<<< HEAD
             tickLine={{ stroke: '#475569' }}
+=======
+>>>>>>> 10bb505 (serious meow)
           />
           
           <YAxis 
             domain={yDomain}
             stroke="#475569"
             tick={{ fill: '#64748b', fontSize: 12 }}
+<<<<<<< HEAD
             tickLine={{ stroke: '#475569' }}
+=======
+>>>>>>> 10bb505 (serious meow)
             tickFormatter={(v) => v.toFixed(1)}
           />
           
           <Tooltip
+<<<<<<< HEAD
             contentStyle={{
               backgroundColor: '#0f172a',
               border: '1px solid #1e293b',
@@ -264,11 +294,20 @@ function PriceChart({
           />
 
           <Area
+=======
+            contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #1e293b' }}
+          />
+
+          
+          <Area
+            isAnimationActive={false}
+>>>>>>> 10bb505 (serious meow)
             type="monotone"
             dataKey="price"
             stroke="#10b981"
             strokeWidth={2}
             fill="url(#priceGradient)"
+<<<<<<< HEAD
             dot={false}
             activeDot={{ r: 4, fill: '#10b981', stroke: '#fff', strokeWidth: 2 }}
           />
@@ -294,10 +333,40 @@ function PriceChart({
               fill="#f43f5e"
               stroke="#fff"
               strokeWidth={2}
+=======
+          />
+
+          
+          {buyTrades.map((trade) => (
+            <ReferenceDot
+              key={`buy-${trade.t}`}
+              x={trade.t}
+              y={trade.price}
+              r={5}
+              fill="#10b981"
+              stroke="#fff"
+              strokeWidth={2}
+              isFront={true} 
+            />
+          ))}
+
+          
+          {sellTrades.map((trade) => (
+            <ReferenceDot
+              key={`sell-${trade.t}`}
+              x={trade.t}
+              y={trade.price}
+              r={5}
+              fill="#f43f5e"
+              stroke="#fff"
+              strokeWidth={2}
+              isFront={true}
+>>>>>>> 10bb505 (serious meow)
             />
           ))}
         </AreaChart>
       </ResponsiveContainer>
+<<<<<<< HEAD
 
       {trades.length > 0 && (
         <div className="flex items-center justify-center gap-6 mt-4">
@@ -311,11 +380,16 @@ function PriceChart({
           </div>
         </div>
       )}
+=======
+>>>>>>> 10bb505 (serious meow)
     </div>
   );
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 10bb505 (serious meow)
 function MetricsPanel({ metrics }: { metrics: SimulationResult['metrics'] }) {
   const pnlTrend = metrics.total_pnl > 0 ? 'positive' : metrics.total_pnl < 0 ? 'negative' : 'neutral';
   const winRateTrend = metrics.win_rate > 0.5 ? 'positive' : metrics.win_rate < 0.3 ? 'negative' : 'neutral';
@@ -385,7 +459,10 @@ function MetricsPanel({ metrics }: { metrics: SimulationResult['metrics'] }) {
   );
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 10bb505 (serious meow)
 export default function ChallengeMode() {
   const navigate = useNavigate();
   const { challengeId } = useParams();
@@ -449,6 +526,7 @@ export default function ChallengeMode() {
   };
 
   const handleRunSimulation = useCallback(async () => {
+<<<<<<< HEAD
   if (!selectedChallenge) return;
   if (strategy.buy.length === 0 || strategy.sell.length === 0) {
     return toast.error('Define buy and sell rules');
@@ -491,6 +569,47 @@ export default function ChallengeMode() {
     setLoading(false);
   }
 }, [selectedChallenge, strategy]);
+=======
+    if (!selectedChallenge) return;
+    if (strategy.buy.length === 0 || strategy.sell.length === 0) {
+      return toast.error('Define buy and sell rules');
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:8000/simulate',{
+        method : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          market: selectedChallenge.behavior || 'Trending',
+          timesteps: selectedChallenge.prices.length,
+          seed:42,
+          strategy: strategy,
+          prices: selectedChallenge.prices
+        })
+      });
+
+      if(!response.ok){
+        const errorData = await response.json();
+        throw new Error(errorData.details || 'Simulation failed');
+      }
+    
+      const simResult: SimulationResult = await response.json();
+      setResult(simResult);
+      const objRes = checkObjectives(simResult, selectedChallenge.objectives);
+      setObjectivesMet(objRes);
+      
+      if (objRes.every(o => o)) toast.success('Challenge completed!');
+      setActiveTab('results');
+    } catch (error) {
+      toast.error('Could not connect to backend at port 8000');
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }, [selectedChallenge, strategy]);
+>>>>>>> 10bb505 (serious meow)
 
   const handleReset = () => {
     setStrategy({ buy: [], sell: [] });
@@ -498,7 +617,10 @@ export default function ChallengeMode() {
     setObjectivesMet(null);
   };
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> 10bb505 (serious meow)
   if (!selectedChallenge) {
     return (
       <div className="min-h-[calc(100vh-64px-80px)] p-4 sm:p-6 lg:p-8">
@@ -570,9 +692,49 @@ export default function ChallengeMode() {
     );
   }
 
+<<<<<<< HEAD
   
   const allObjectivesMet = objectivesMet?.every(o => o);
 
+=======
+  const allObjectivesMet = objectivesMet?.every(o => o);
+
+  // Helper component for the Resource Card
+  const ResourceCard = () => (
+    selectedChallenge.resources && selectedChallenge.resources.length > 0 ? (
+      <Card className="bg-slate-900/50 border-slate-800 mt-6">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-slate-200 flex items-center gap-2 text-sm font-semibold">
+            <BookOpen className="w-4 h-4 text-indigo-400" />
+            Learning Resources: {selectedChallenge.name}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {selectedChallenge.resources.map((resource, i) => (
+              <a 
+                key={i}
+                href={resource.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group p-3 rounded-lg border border-slate-800 bg-slate-900/50 hover:border-indigo-500/30 hover:bg-slate-800/50 transition-all"
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">{resource.type || 'Resource'}</span>
+                  <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-indigo-400" />
+                </div>
+                <p className="text-xs font-medium text-slate-200 group-hover:text-indigo-400 transition-colors line-clamp-1">
+                  {resource.title}
+                </p>
+              </a>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    ) : null
+  );
+
+>>>>>>> 10bb505 (serious meow)
   return (
     <div className="min-h-[calc(100vh-64px-80px)] p-4 sm:p-6 lg:p-8">
       <div className="max-w-[1800px] mx-auto">
@@ -650,16 +812,30 @@ export default function ChallengeMode() {
             <TabsTrigger value="chart" className="data-[state=active]:bg-slate-800">
               Price Chart
             </TabsTrigger>
+<<<<<<< HEAD
             <TabsTrigger value="results" className="data-[state=active]:bg-slate-800" disabled={!result}>
               Results
             </TabsTrigger>
+=======
+            <TabsTrigger value = "resources" className='data-[state=active]:bg-slate-800'>
+              Resources
+            </TabsTrigger>
+            <TabsTrigger value="results" className="data-[state=active]:bg-slate-800" disabled={!result}>
+              Results
+            </TabsTrigger>
+            
+>>>>>>> 10bb505 (serious meow)
           </TabsList>
 
           <TabsContent value="strategy" className="space-y-6">
             <div className="grid lg:grid-cols-3 gap-6">
+<<<<<<< HEAD
               {/* Strategy Builder */}
               <div className="lg:col-span-2 space-y-6">
                 {/* Buy Conditions */}
+=======
+              <div className="lg:col-span-2 space-y-6">
+>>>>>>> 10bb505 (serious meow)
                 <Card className="bg-slate-900/50 border-slate-800">
                   <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
@@ -696,7 +872,10 @@ export default function ChallengeMode() {
                   </CardContent>
                 </Card>
 
+<<<<<<< HEAD
                 {/* Sell Conditions */}
+=======
+>>>>>>> 10bb505 (serious meow)
                 <Card className="bg-slate-900/50 border-slate-800">
                   <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
@@ -734,9 +913,13 @@ export default function ChallengeMode() {
                 </Card>
               </div>
 
+<<<<<<< HEAD
               {/* Sidebar */}
               <div className="space-y-6">
                 {/* Objectives */}
+=======
+              <div className="space-y-6">
+>>>>>>> 10bb505 (serious meow)
                 <Card className="bg-slate-900/50 border-slate-800">
                   <CardHeader>
                     <CardTitle className="text-slate-200 flex items-center gap-2">
@@ -768,7 +951,10 @@ export default function ChallengeMode() {
                   </CardContent>
                 </Card>
 
+<<<<<<< HEAD
                 {/* Hints */}
+=======
+>>>>>>> 10bb505 (serious meow)
                 <Card className="bg-slate-900/50 border-slate-800">
                   <CardHeader>
                     <CardTitle className="text-slate-200 flex items-center gap-2">
@@ -788,7 +974,10 @@ export default function ChallengeMode() {
                   </CardContent>
                 </Card>
 
+<<<<<<< HEAD
                 {/* Why This Works */}
+=======
+>>>>>>> 10bb505 (serious meow)
                 <Card className="bg-slate-900/50 border-slate-800">
                   <CardHeader>
                     <CardTitle className="text-slate-200 text-sm">Why This Works</CardTitle>
@@ -806,9 +995,18 @@ export default function ChallengeMode() {
                 </Card>
               </div>
             </div>
+<<<<<<< HEAD
           </TabsContent>
 
           <TabsContent value="chart">
+=======
+            
+          </TabsContent>
+          <TabsContent value="resources" className='space-y-6'>
+            <ResourceCard />
+          </TabsContent>
+          <TabsContent value="chart" className="space-y-6">
+>>>>>>> 10bb505 (serious meow)
             <Card className="bg-slate-900/50 border-slate-800">
               <CardHeader>
                 <CardTitle className="text-slate-200">Price Action</CardTitle>
@@ -821,12 +1019,19 @@ export default function ChallengeMode() {
                 />
               </CardContent>
             </Card>
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 10bb505 (serious meow)
           </TabsContent>
 
           <TabsContent value="results">
             {result && objectivesMet && (
               <div className="space-y-6">
+<<<<<<< HEAD
                 {/* Challenge Result */}
+=======
+>>>>>>> 10bb505 (serious meow)
                 <Card className={`
                   border-2 
                   ${allObjectivesMet ? 'bg-emerald-950/20 border-emerald-500/50' : 'bg-slate-900/50 border-slate-800'}
@@ -916,10 +1121,15 @@ export default function ChallengeMode() {
                   </CardContent>
                 </Card>
 
+<<<<<<< HEAD
                 {/* Metrics */}
                 <MetricsPanel metrics={result.metrics} />
 
                 {/* Trade Chart */}
+=======
+                <MetricsPanel metrics={result.metrics} />
+
+>>>>>>> 10bb505 (serious meow)
                 <Card className="bg-slate-900/50 border-slate-800">
                   <CardHeader>
                     <CardTitle className="text-slate-200">Trade Visualization</CardTitle>
@@ -939,4 +1149,8 @@ export default function ChallengeMode() {
       </div>
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 10bb505 (serious meow)

@@ -15,6 +15,7 @@ enum class SignalType {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 class MarketSimulator {
 public:
@@ -47,14 +48,23 @@ private:
 
 
 =======
+=======
+>>>>>>> 10bb505 (serious meow)
 class MarketSimulator {
 public:
     MarketSimulator(const Config& cfg);
     
+<<<<<<< HEAD
     // Phase 1: Generate price series
     void runMarket();
 
     // Phase 2: Compute indicators
+=======
+    
+    void runMarket();
+
+    
+>>>>>>> 10bb505 (serious meow)
     void computeMovingAverage(int short_w, int long_w);
     void computeRSI(int period);
     void computeVolatility(int window);
@@ -76,6 +86,12 @@ private:
     double stepMeanReverting(double price);
     
     std::vector<double> prices;
+<<<<<<< HEAD
     std::unordered_map<SignalType, std::vector<double>> signals;
 };
 >>>>>>> 9dff4cf (meow)
+=======
+    bool external_prices = false;
+    std::unordered_map<SignalType, std::vector<double>> signals;
+};
+>>>>>>> 10bb505 (serious meow)

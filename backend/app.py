@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from flask import Flask, request, jsonify
 =======
+=======
+>>>>>>> 10bb505 (serious meow)
 #!/usr/bin/env python3
 """
 AXIOM - Algorithmic Trading Simulator Backend
@@ -8,19 +11,27 @@ Flask API that connects the React frontend to the C++ simulation engine.
 """
 
 from flask import Flask, request, jsonify, send_from_directory
+<<<<<<< HEAD
 >>>>>>> 9dff4cf (meow)
+=======
+>>>>>>> 10bb505 (serious meow)
 from flask_cors import CORS
 import json
 import subprocess
 import os
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import sys
 >>>>>>> 9dff4cf (meow)
+=======
+import sys
+>>>>>>> 10bb505 (serious meow)
 
 app = Flask(__name__)
 CORS(app)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 @app.route("/")
 def home():
@@ -85,6 +96,18 @@ if sys.platform == "darwin":  # macOS
 elif sys.platform == "win32":  # Windows
     ENGINE_BINARY = "engine.exe"
 else:  # Linux
+=======
+
+BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+ENGINE_DIR = os.path.join(BACKEND_DIR, "Engine")
+
+
+if sys.platform == "darwin":  # macOS
+    ENGINE_BINARY = "engine_mac"
+elif sys.platform == "win32":  
+    ENGINE_BINARY = "engine.exe"
+else:  
+>>>>>>> 10bb505 (serious meow)
     ENGINE_BINARY = "engine_linux"
 
 ENGINE_PATH = os.path.join(ENGINE_DIR, ENGINE_BINARY)
@@ -269,4 +292,7 @@ if __name__ == "__main__":
     print("=" * 60)
     
     app.run(host="0.0.0.0", port=8000, debug=True)
+<<<<<<< HEAD
 >>>>>>> 9dff4cf (meow)
+=======
+>>>>>>> 10bb505 (serious meow)

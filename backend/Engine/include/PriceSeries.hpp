@@ -3,6 +3,7 @@
 
 using namespace std;
 <<<<<<< HEAD
+<<<<<<< HEAD
 class PriceSeries {
     public :
     vector<double> prices;
@@ -12,6 +13,8 @@ class PriceSeries {
     
 };
 =======
+=======
+>>>>>>> 10bb505 (serious meow)
 
 class PriceSeries {
 public:
@@ -22,4 +25,7 @@ public:
 };
 
     
+<<<<<<< HEAD
 >>>>>>> 9dff4cf (meow)
+=======
+>>>>>>> 10bb505 (serious meow)

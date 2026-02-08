@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 {
   "market": "Trending",
   "timesteps": 100,
@@ -21,18 +22,42 @@
         "op": "<",
         "rhs_type": "CONSTANT",
         "rhs_value": 30,
+=======
+{
+  "market": "Sideways",
+  "timesteps": 1000,
+  "seed": 42,
+  "strategy": {
+    "buy": [
+      {
+        "lhs": "Price",
+        "op": ">",
+        "rhs_type": "CONSTANT",
+        "rhs_value": 100,
+>>>>>>> 10bb505 (serious meow)
         "rhs_signal": "Price"
       }
     ],
     "sell": [
       {
+<<<<<<< HEAD
         "lhs": "RSI",
         "op": ">",
         "rhs_type": "CONSTANT",
         "rhs_value": 70,
+=======
+        "lhs": "Price",
+        "op": "<",
+        "rhs_type": "CONSTANT",
+        "rhs_value": 100,
+>>>>>>> 10bb505 (serious meow)
         "rhs_signal": "Price"
       }
     ]
   }
+<<<<<<< HEAD
 }
 >>>>>>> 9dff4cf (meow)
+=======
+}
+>>>>>>> 10bb505 (serious meow)

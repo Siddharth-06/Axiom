@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 * {
@@ -21,6 +22,8 @@ body {
 a, button {
   all: unset;
 =======
+=======
+>>>>>>> 10bb505 (serious meow)
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -77,7 +80,11 @@ a, button {
   }
   
   body {
+<<<<<<< HEAD
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+=======
+    font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+>>>>>>> 10bb505 (serious meow)
     background-color: var(--axiom-bg);
     color: var(--axiom-text);
     overflow-x: hidden;
@@ -353,5 +360,8 @@ a, button {
 .recharts-tooltip-item {
   color: var(--axiom-accent) !important;
   font-family: 'JetBrains Mono', monospace !important;
+<<<<<<< HEAD
 >>>>>>> 9dff4cf (meow)
+=======
+>>>>>>> 10bb505 (serious meow)
 }

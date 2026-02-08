@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # AXIOM
 ## An Educational Algorithmic Trading Simulator
@@ -26,6 +27,8 @@ AXIOM addresses this gap by providing:
 
 The goal is to help users understand why strategies behave the way they do, not to predict markets.
 =======
+=======
+>>>>>>> 10bb505 (serious meow)
 # AXIOM - Complete Algorithmic Trading Simulator
 
 A complete, ready-to-run algorithmic trading simulator with a polished React frontend, Flask backend, and high-performance C++ engine.
@@ -289,12 +292,16 @@ Change ports in:
 
 **Library (`backend/Engine/json/`):**
 - `json.hpp` - nlohmann JSON library
+<<<<<<< HEAD
 >>>>>>> 9dff4cf (meow)
+=======
+>>>>>>> 10bb505 (serious meow)
 
 ---
 
 ## Architecture
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 AXIOM follows a clean, layered architecture:
 
@@ -431,6 +438,8 @@ npm run dev
 
 Open the URL shown in the terminal (usually http://localhost:5173).
 =======
+=======
+>>>>>>> 10bb505 (serious meow)
 ```
 ┌─────────────┐     HTTP      ┌─────────────┐     Pipe      ┌─────────────┐
 │   React     │ ────────────> │    Flask    │ ────────────> │   C++       │
@@ -438,12 +447,16 @@ Open the URL shown in the terminal (usually http://localhost:5173).
 │  (port 5173)│ <──────────── │  (port 8000)│ <──────────── │             │
 └─────────────┘    JSON       └─────────────┘    JSON       └─────────────┘
 ```
+<<<<<<< HEAD
 >>>>>>> 9dff4cf (meow)
+=======
+>>>>>>> 10bb505 (serious meow)
 
 ---
 
 ## Team
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 AXIOM is built by a team of undergraduate engineers with interests in:
 - systems programming
@@ -457,6 +470,8 @@ AXIOM is built by a team of undergraduate engineers with interests in:
 AXIOM is an educational simulation platform.  
 It does not provide financial advice, investment recommendations, or real trading functionality.
 =======
+=======
+>>>>>>> 10bb505 (serious meow)
 - **Siddharth** - Project Lead & Engine Developer
 - **Manas Agrawal** - Frontend & UI Developer  
 - **Qafirnaal** - Backend & Integration
@@ -468,4 +483,7 @@ Educational use only. Not for real trading.
 ## Support
 
 For issues, visit: https://github.com/Siddharth-06/AXIOM---algo-trading-sandbox
+<<<<<<< HEAD
 >>>>>>> 9dff4cf (meow)
+=======
+>>>>>>> 10bb505 (serious meow)

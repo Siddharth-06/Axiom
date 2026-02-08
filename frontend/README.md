@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # React + Vite
 =======
 # React + TypeScript + Vite
 >>>>>>> 9dff4cf (meow)
+=======
+# React + TypeScript + Vite
+>>>>>>> 10bb505 (serious meow)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -18,8 +22,11 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 =======
+=======
+>>>>>>> 10bb505 (serious meow)
 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
 ```js
@@ -78,4 +85,7 @@ export default defineConfig([
   },
 ])
 ```
+<<<<<<< HEAD
 >>>>>>> 9dff4cf (meow)
+=======
+>>>>>>> 10bb505 (serious meow)
