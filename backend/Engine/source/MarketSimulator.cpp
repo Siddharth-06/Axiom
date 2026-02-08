@@ -5,31 +5,19 @@
 MarketSimulator::MarketSimulator(const Config& cfg)
     : config(cfg), rng(cfg.seed) {}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-void MarketSimulator::setPrices(const std::vector<double>& inputPrices) {
-    prices = inputPrices;
-=======
 
 void MarketSimulator::setPrices(const std::vector<double>& inputPrices) {
     prices = inputPrices;
     external_prices = true;
->>>>>>> 10bb505 (serious meow)
 }
 
 void MarketSimulator::registerPriceSignal() {
     signals[SignalType::PRICE] = prices;
 }
 
-<<<<<<< HEAD
->>>>>>> 9dff4cf (meow)
-void MarketSimulator::runMarket() {
-=======
 void MarketSimulator::runMarket() {
     if(external_prices)
         throw std::logic_error("runMarket() called with external prices");
->>>>>>> 10bb505 (serious meow)
     prices.clear();
     double price = 100.0;
     prices.push_back(price);
@@ -68,13 +56,6 @@ double MarketSimulator::stepMeanReverting(double price) {
     return next > 0.0 ? next : 0.01;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 9dff4cf (meow)
-=======
->>>>>>> 10bb505 (serious meow)
 static double mean(const std::vector<double>& v, int l, int r) {
     double s = 0.0;
     for (int i = l; i <= r; i++) s += v[i];
@@ -97,13 +78,6 @@ void MarketSimulator::computeMovingAverage(int sw, int lw) {
 }
 
 void MarketSimulator::computeRSI(int period) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 9dff4cf (meow)
-=======
->>>>>>> 10bb505 (serious meow)
     std::vector<double> rsi(prices.size(), 0.0);
 
     double gain = 0.0;
@@ -142,29 +116,11 @@ void MarketSimulator::computeRSI(int period) {
     signals[SignalType::RSI] = rsi;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-void MarketSimulator::computeVolatility(int window) {
-
-    std::vector<double> vol(prices.size(), 0.0);
-
-    for (int t = window; t < (int)prices.size(); t++) {
-
-        double mean = 0.0;
-=======
-=======
->>>>>>> 10bb505 (serious meow)
 void MarketSimulator::computeVolatility(int window) {
     std::vector<double> vol(prices.size(), 0.0);
 
     for (int t = window; t < (int)prices.size(); t++) {
         double mean_val = 0.0;
-<<<<<<< HEAD
->>>>>>> 9dff4cf (meow)
-=======
->>>>>>> 10bb505 (serious meow)
         double sq_sum = 0.0;
 
         // compute log returns
@@ -172,18 +128,6 @@ void MarketSimulator::computeVolatility(int window) {
         for (int i = t - window + 1; i <= t; i++) {
             double r = std::log(prices[i] / prices[i - 1]);
             rets.push_back(r);
-<<<<<<< HEAD
-<<<<<<< HEAD
-            mean += r;
-        }
-
-        mean /= window;
-
-        for (double r : rets)
-            sq_sum += (r - mean) * (r - mean);
-=======
-=======
->>>>>>> 10bb505 (serious meow)
             mean_val += r;
         }
 
@@ -191,10 +135,6 @@ void MarketSimulator::computeVolatility(int window) {
 
         for (double r : rets)
             sq_sum += (r - mean_val) * (r - mean_val);
-<<<<<<< HEAD
->>>>>>> 9dff4cf (meow)
-=======
->>>>>>> 10bb505 (serious meow)
 
         vol[t] = std::sqrt(sq_sum / window);
     }
@@ -231,24 +171,10 @@ std::vector<SignalType> MarketSimulator::getAvailableSignals() const {
     return out;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 9dff4cf (meow)
-=======
->>>>>>> 10bb505 (serious meow)
 const std::vector<double>& MarketSimulator::getPrices() const {
     return prices;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 9dff4cf (meow)
-=======
->>>>>>> 10bb505 (serious meow)
 std::string MarketSimulator::signalName(SignalType s) {
     switch (s) {
         case SignalType::PRICE: return "Price";
@@ -262,12 +188,9 @@ std::string MarketSimulator::signalName(SignalType s) {
 }
 
 double MarketSimulator::getSignal(SignalType type, int t) const {
-<<<<<<< HEAD
-=======
     if(type == SignalType :: PRICE){
         return prices[t];
     }
->>>>>>> 10bb505 (serious meow)
     auto it = signals.find(type);
     if (it == signals.end())
         throw std::runtime_error("Signal not computed");

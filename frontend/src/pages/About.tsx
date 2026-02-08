@@ -221,19 +221,11 @@ const About = () => {
             {features.map((feature, idx) => (
               <div
                 key={idx}
-<<<<<<< HEAD
-                //initial={{ opacity: 0, y: 20 }}
-                //whileInView={{ opacity: 1, y: 0 }}
-                //viewport={{ once: true }}
-                //transition={{ duration: 0.5, delay: idx * 0.1 }}
-                //whileHover={{ y: -5, borderColor: 'var(--axiom-accent)' }}
-=======
                 // initial={{ opacity: 0, y: 20 }}
                 // whileInView={{ opacity: 1, y: 0 }}
                 // viewport={{ once: true }}
                 // transition={{ duration: 0.5, delay: idx * 0.1 }}
                 // whileHover={{ y: -5, borderColor: 'var(--axiom-accent)' }}
->>>>>>> 10bb505 (serious meow)
                 className="p-6 rounded-xl border transition-all duration-300"
                 style={{ background: 'var(--axiom-panel)', borderColor: 'var(--axiom-border)' }}
               >
@@ -253,11 +245,7 @@ const About = () => {
         </motion.div>
       </section>
 
-<<<<<<< HEAD
-      {/* Architecture Section */}
-=======
       
->>>>>>> 10bb505 (serious meow)
       <section className="py-16 px-4 sm:px-6 lg:px-8 border-t" style={{ borderColor: 'var(--axiom-border)' }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -305,11 +293,7 @@ const About = () => {
             ))}
           </div>
 
-<<<<<<< HEAD
-          {/* Architecture Diagram */}
-=======
           
->>>>>>> 10bb505 (serious meow)
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -335,11 +319,7 @@ const About = () => {
         </motion.div>
       </section>
 
-<<<<<<< HEAD
-      {/* Example Strategies Section */}
-=======
       
->>>>>>> 10bb505 (serious meow)
       <section className="py-16 px-4 sm:px-6 lg:px-8 border-t" style={{ borderColor: 'var(--axiom-border)' }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -394,11 +374,7 @@ const About = () => {
         </motion.div>
       </section>
 
-<<<<<<< HEAD
-      {/* Team Section */}
-=======
       
->>>>>>> 10bb505 (serious meow)
       <section className="py-16 px-4 sm:px-6 lg:px-8 border-t" style={{ borderColor: 'var(--axiom-border)' }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -452,11 +428,7 @@ const About = () => {
         </motion.div>
       </section>
 
-<<<<<<< HEAD
-      {/* Disclaimer Section */}
-=======
       
->>>>>>> 10bb505 (serious meow)
       <section className="py-16 px-4 sm:px-6 lg:px-8 border-t" style={{ borderColor: 'var(--axiom-border)' }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -492,11 +464,7 @@ const About = () => {
         </motion.div>
       </section>
 
-<<<<<<< HEAD
-      {/* GitHub CTA */}
-=======
 
->>>>>>> 10bb505 (serious meow)
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

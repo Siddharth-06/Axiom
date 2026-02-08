@@ -4,11 +4,9 @@ import { TrendingUp, Home, Trophy, Info } from 'lucide-react';
 import { Button } from './components/ui/button';
 import ChallengeMode from './pages/ChallengeMode';
 import  SandboxMode  from './pages/SandboxMode';
-<<<<<<< HEAD
-=======
 import LandingPage from './pages/LandingPage';
->>>>>>> 10bb505 (serious meow)
 import About from './pages/About';
+import myLogo from './logo.png'
 import './App.css';
 
 
@@ -30,8 +28,8 @@ function Layout() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                <TrendingUp className="w-6 h-6 text-white" />
+              <div className="w-8 h-6 rounded-lg object-contain transition-transform hover:scale-110">
+                <img src={myLogo} alt='Logo' />
               </div>
               <div>
                 <h1 className="text-xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
@@ -94,11 +92,7 @@ function Layout() {
               <Route path="/challenge" element={<ChallengeMode />} />
               <Route path="/challenge/:challengeId" element={<ChallengeMode />} />
               <Route path="/about" element={<About/>} />
-<<<<<<< HEAD
-              <Route path="/" element={<About />} />
-=======
               <Route path="/" element={<LandingPage />} />
->>>>>>> 10bb505 (serious meow)
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </motion.div>

@@ -10,10 +10,6 @@ export interface Challenge {
   prices: number[];
   objectives: ChallengeObjective[];
   hints: string[];
-<<<<<<< HEAD
-}
-
-=======
   resources: ChallengeResources[];
 }
 
@@ -22,7 +18,6 @@ export interface ChallengeResources{
   url: string;
   type: string;
 }
->>>>>>> 10bb505 (serious meow)
 export interface ChallengeObjective {
   type: 'profit' | 'win_rate' | 'max_drawdown' | 'survival' | 'trades';
   target: number;

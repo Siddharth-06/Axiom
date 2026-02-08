@@ -22,11 +22,7 @@ interface Rule {
   lhs: string;
   op: '<' | '>';
   rhs_type: 'CONSTANT' | 'SIGNAL';
-<<<<<<< HEAD
-  rhs_value: number;
-=======
   rhs_value: number | null;
->>>>>>> 10bb505 (serious meow)
   rhs_signal?: string;
 }
 
@@ -356,7 +352,7 @@ const SandboxMode = () => {
                           <select
                             value={rule.lhs}
                             onChange={(e) => handleUpdateRule(activeTab, idx, 'lhs', e.target.value)}
-                            className="axiom-select w-full text-xs py-2"
+                            className="axiom-select w-full text-xs py-2 text-center"
                           >
                             {indicators.map((i) => (
                               <option key={i.value} value={i.value}>{i.label}</option>
@@ -395,10 +391,6 @@ const SandboxMode = () => {
                           {rule.rhs_type === 'CONSTANT' ? (
                             <input
                               type="number"
-<<<<<<< HEAD
-                              value={rule.rhs_value}
-                              onChange={(e) => handleUpdateRule(activeTab, idx, 'rhs_value', Number(e.target.value))}
-=======
                               value={rule.rhs_value ?? ""}
                               onChange={(e) => {
                                 const v = e.target.value;
@@ -409,7 +401,6 @@ const SandboxMode = () => {
                                   v === "" ? null : Number(v)
                                 );
                               }}
->>>>>>> 10bb505 (serious meow)
                               className="axiom-input w-full text-xs py-2 px-1000"
                             />
                           ) : (
